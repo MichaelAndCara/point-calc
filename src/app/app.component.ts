@@ -57,5 +57,6 @@ export class AppComponent {
     this.points = [];
     this.food = new Food();
     this.food.servings = 1;
+    document.getElementById("calories").focus();
   }
 }
