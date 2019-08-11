@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+          <label for="calories" class="col-sm-2 col-form-label col-form-label-lg">Calories</label>
+      </div>
+      <div class="col-xs-8">
+        <input [(ngModel)]="food.calories" class="form-control form-control-lg" id="calories" type="number" placeholder="Calories" autofocus (keyup.enter)="keytab('fat')"> 
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="fat" class="col-sm-2 col-form-label col-form-label-lg">Fat</label>
+        </div>
+      <div class="col-xs-8">
+        <input [(ngModel)]="food.fat" class="form-control form-control-lg" id="fat" type="number" placeholder="Fat" (keyup.enter)="keytab('fiber')">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="fiber" class="col-sm-2 col-form-label col-form-label-lg">Fiber</label>
+        </div>
+      <div class="col-xs-8">
+        <input [(ngModel)]="food.fiber" class="form-control form-control-lg" id="fiber" type="number" placeholder="Fiber" (keyup.enter)="keytab('servings')">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="servings" class="col-sm-2 col-form-label col-form-label-lg">Servings</label>
+        </div>
+      <div class="col-xs-8">
+        <input [(ngModel)]="food.servings" class="form-control form-control-lg" id="servings" type="number" placeholder="Servings" (keyup.enter)="keytab('calculate')">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 btn-group" role="group">
+        <button (click)="calculate(food)" id="calculate" class="btn btn-secondary btn-lg" type="submit">Calc</button>
+        <button (click)="reset()" class="btn btn-secondary btn-lg" type="submit">Reset</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Servings</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let point of points">
+              <td>{{point.servings | number:'1.0-2'}}</td>
+              <td>{{point.points | number:'1.0-0'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
