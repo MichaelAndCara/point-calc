@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from 'src/app/food';
-import { Point } from 'src/app/point';
+import { Food } from 'src/app/models/food';
+import { Point } from 'src/app/models/point';
 
 @Component({
   selector: 'app-calculator',
