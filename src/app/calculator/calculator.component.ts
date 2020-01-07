@@ -8,7 +8,7 @@ import { Point } from 'src/app/models/point';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  
+
   public title = 'WW Point Calc';
   public food: Food = new Food();
   public points: Point[] = [];
@@ -37,8 +37,8 @@ export class CalculatorComponent implements OnInit {
     let tempServings = food.servings;
 
     while (tempServings > 0) {
-      let tempCalories = food.calories * tempServings;
-      let tempFat = food.fat * tempServings;
+      const tempCalories = food.calories * tempServings;
+      const tempFat = food.fat * tempServings;
       let tempFiber = food.fiber * tempServings;
 
       if (tempFiber > 0 && tempFiber < 1) {
@@ -63,6 +63,6 @@ export class CalculatorComponent implements OnInit {
     this.points = [];
     this.food = new Food();
     this.food.servings = 1;
-    document.getElementById("calories").focus();
+    document.getElementById('calories').focus();
   }
 }
