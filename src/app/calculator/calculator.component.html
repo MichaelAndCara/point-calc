@@ -4,7 +4,7 @@
           <label for="calories" class="col-sm-2 col-form-label col-form-label-lg">Calories</label>
       </div>
       <div class="col-xs-8">
-        <input [(ngModel)]="food.calories" class="form-control form-control-lg" id="calories" type="number" placeholder="Calories" autofocus (keyup.enter)="keytab('fat')"> 
+        <input [(ngModel)]="food.calories" class="form-control form-control-lg" id="calories" type="number" placeholder="Calories" autofocus onClick="this.select()" (keyup.enter)="keytab('fat')"> 
       </div>
     </div>
     <div class="row">
@@ -12,7 +12,7 @@
             <label for="fat" class="col-sm-2 col-form-label col-form-label-lg">Fat</label>
         </div>
       <div class="col-xs-8">
-        <input [(ngModel)]="food.fat" class="form-control form-control-lg" id="fat" type="number" placeholder="Fat" (keyup.enter)="keytab('fiber')">
+        <input [(ngModel)]="food.fat" class="form-control form-control-lg" id="fat" type="number" placeholder="Fat" onClick="this.select()" (keyup.enter)="keytab('fiber')">
       </div>
     </div>
     <div class="row">
@@ -20,7 +20,7 @@
             <label for="fiber" class="col-sm-2 col-form-label col-form-label-lg">Fiber</label>
         </div>
       <div class="col-xs-8">
-        <input [(ngModel)]="food.fiber" class="form-control form-control-lg" id="fiber" type="number" placeholder="Fiber" (keyup.enter)="keytab('servings')">
+        <input [(ngModel)]="food.fiber" class="form-control form-control-lg" id="fiber" type="number" placeholder="Fiber" onClick="this.select()" (keyup.enter)="keytab('servings')">
       </div>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
             <label for="servings" class="col-sm-2 col-form-label col-form-label-lg">Servings</label>
         </div>
       <div class="col-xs-8">
-        <input [(ngModel)]="food.servings" class="form-control form-control-lg" id="servings" type="number" placeholder="Servings" (keyup.enter)="keytab('calculate')">
+        <input [(ngModel)]="food.servings" class="form-control form-control-lg" id="servings" type="number" placeholder="Servings" onClick="this.select()" (keyup.enter)="keytab('calculate')">
       </div>
     </div>
     <div class="row">
