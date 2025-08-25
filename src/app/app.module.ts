@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

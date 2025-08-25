@@ -3,4 +3,5 @@ export class Food {
     fat: number;
     fiber: number;
     servings: number;
+    grams: number;
 }

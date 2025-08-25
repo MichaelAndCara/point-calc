@@ -1,58 +1,64 @@
-<div class="container">
-    <div class="row">
-      <div class="col-xs-4">
-          <label for="calories" class="col-sm-2 col-form-label col-form-label-lg">Calories</label>
-      </div>
-      <div class="col-xs-8">
-        <input [(ngModel)]="food.calories" class="form-control form-control-lg" id="calories" type="number" placeholder="Calories" autofocus onClick="this.select()" (keyup.enter)="keytab('fat')"> 
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-4">
-            <label for="fat" class="col-sm-2 col-form-label col-form-label-lg">Fat</label>
-        </div>
-      <div class="col-xs-8">
-        <input [(ngModel)]="food.fat" class="form-control form-control-lg" id="fat" type="number" placeholder="Fat" onClick="this.select()" (keyup.enter)="keytab('fiber')">
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-4">
-            <label for="fiber" class="col-sm-2 col-form-label col-form-label-lg">Fiber</label>
-        </div>
-      <div class="col-xs-8">
-        <input [(ngModel)]="food.fiber" class="form-control form-control-lg" id="fiber" type="number" placeholder="Fiber" onClick="this.select()" (keyup.enter)="keytab('servings')">
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-4">
-            <label for="servings" class="col-sm-2 col-form-label col-form-label-lg">Servings</label>
-        </div>
-      <div class="col-xs-8">
-        <input [(ngModel)]="food.servings" class="form-control form-control-lg" id="servings" type="number" placeholder="Servings" onClick="this.select()" (keyup.enter)="keytab('calculate')">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 btn-group" role="group">
-        <button (click)="calculate(food)" id="calculate" class="btn btn-secondary btn-lg" type="submit">Calc</button>
-        <button (click)="reset()" class="btn btn-secondary btn-lg" type="submit">Reset</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Servings</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let point of points">
-              <td>{{point.servings | number:'1.0-2'}}</td>
-              <td>{{point.points | number:'1.0-0'}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="d-flex justify-content-between pt-2">
+  <label for="calories" class="col-sm-2 col-form-label col-form-label-lg pe-2 flex-grow-1">Calories</label>
+  <input [(ngModel)]="food.calories" class="form-control form-control-lg w-auto" id="calories" type="number"
+    placeholder="Calories" autofocus onClick="this.select()" (keyup.enter)="keytab('fat')">
+</div>
+<div class="d-flex justify-content-between pt-2">
+  <label for="fat" class="col-sm-2 col-form-label col-form-label-lg pe-2">Fat</label>
+  <input [(ngModel)]="food.fat" class="form-control form-control-lg w-auto" id="fat" type="number" placeholder="Fat"
+    onClick="this.select()" (keyup.enter)="keytab('fiber')">
+</div>
+<div class="d-flex justify-content-between pt-2">
+  <label for="fiber" class="col-sm-2 col-form-label col-form-label-lg">Fiber</label>
+  <input [(ngModel)]="food.fiber" class="form-control form-control-lg w-auto" id="fiber" type="number"
+    placeholder="Fiber" onClick="this.select()" (keyup.enter)="keytab('grams')">
+</div>
+<div class="d-flex pt-2">
+  <div class="w-400">
+    <input type="radio" class="btn-check form-control-lg" name="options-base" id="option5" autocomplete="off"
+      [attr.checked]="gramsToggle ? 'checked' : null" (click)="toggleGrams(true)">
+    <label class="btn" for="option5">Grams</label>
+    <input type="radio" class="btn-check form-control-lg" name="options-base" id="option6" autocomplete="off"
+      [attr.checked]="!gramsToggle ? 'checked' : null" (click)="toggleGrams(false)">
+    <label class="btn" for="option6">Servings</label>
   </div>
+  <input [(ngModel)]="food.grams" class="form-control form-control-lg w-auto" id="grams" type="number"
+    placeholder="{{gramsToggle ? 'Grams' : 'Servings'}}" onClick="this.select()" (keyup.enter)="keytab('calculate')">
+</div>
+<div class="btn-group d-flex justify-content-between pt-2">
+  <button (click)="calculate(food)" id="calculate" class="btn btn-secondary btn-lg flex-fill"
+    type="submit">Calc</button>
+  <button (click)="reset()" class="btn btn-secondary btn-lg flex-fill" type="submit">Reset</button>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <table *ngIf="points && points.length > 0 && gramsToggle" class="table">
+      <thead>
+        <tr>
+          <th>Grams</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let point of points">
+          <td>{{point.grams | number:'1.0-0'}}</td>
+          <td>{{point.points | number:'1.0-0'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table *ngIf="points && points.length && !gramsToggle" class="table">
+      <thead>
+        <tr>
+          <th>Servings</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let point of points">
+          <td>{{point.servings | number:'1.0-2'}}</td>
+          <td>{{point.points | number:'1.0-0'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

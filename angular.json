@@ -110,6 +110,9 @@
               "devServerTarget": "point-calc:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
